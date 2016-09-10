@@ -14,4 +14,6 @@ ADD startup.sh /
 
 RUN chmod ug+x /startup.sh
 
+RUN mkdir /test
+
 
