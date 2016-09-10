@@ -13,11 +13,6 @@ namespace Proj1
 
         public static void Main(string[] args)
         {
-            foreach (var s in args)
-            {
-                Console.WriteLine(s);
-            }
-            
             // var starttime = DateTime.Now;
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             var fin = new StreamReader(new FileStream(args[0], FileMode.Open), Encoding.UTF8);
