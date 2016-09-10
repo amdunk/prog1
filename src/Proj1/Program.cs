@@ -13,13 +13,18 @@ namespace Proj1
 
         public static void Main(string[] args)
         {
-            var starttime = DateTime.Now;
+            foreach (var s in args)
+            {
+                Console.WriteLine(s);
+            }
+            
+            // var starttime = DateTime.Now;
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            var fin = new StreamReader(new FileStream("big.txt", FileMode.Open), Encoding.UTF8);
+            var fin = new StreamReader(new FileStream(args[0], FileMode.Open), Encoding.UTF8);
             String pre = "";
             var buffer = new char[readSize];
             int size;
-            var result = new Dictionary<string , ulong>();
+            var result = new Dictionary<string, ulong>();
             while (true)
             {
                 size = fin.ReadBlock(buffer, 0, readSize);
@@ -33,7 +38,7 @@ namespace Proj1
                 var s = pre + new String(buffer);
                 var line = (pre + new String(buffer)).Split(';');
                 var length = line.Length;
-                if ( size < readSize || buffer[readSize - 1] == ';' )
+                if (size < readSize || buffer[readSize - 1] == ';')
                 {
                     pre = "";
                 }
@@ -61,12 +66,17 @@ namespace Proj1
             var mm = from x in result
                      orderby x.Value descending
                      select new { value = x.Key, count = x.Value };
+            var m = 0;
             foreach (var item in mm)
             {
-                Console.WriteLine("'{0}'\t'{1}'", item.count, item.value);
+                //Console.WriteLine("'{0}'\t'{1}'", item.count, item.value);
+                Console.WriteLine(item.value);
+                if (++m == 5)
+                {
+                    break;
+                }
             }
-            System.Console.ReadKey();
-            Console.WriteLine(DateTime.Now - starttime);
+            //Console.WriteLine(DateTime.Now - starttime);
         }
     }
 }
