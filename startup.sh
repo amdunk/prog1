@@ -2,4 +2,4 @@
 
 unzip -P $1 big.txt.zip
 
-dotnet Proj1.dll /big.txt
+dotnet /dotnet_proj/Proj1.dll /big.txt
