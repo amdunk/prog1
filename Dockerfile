@@ -1,5 +1,5 @@
 FROM microsoft/dotnet
 
-CMD mkdir /dotnet
+CMD mkdir /dotnet_proj
 
-ADD ./* /dotnet/
+ADD ./* /dotnet_proj/
